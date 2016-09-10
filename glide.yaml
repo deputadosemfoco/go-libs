@@ -1,0 +1,4 @@
+package: github.com/vitorsalgado/la-democracia/lib
+import:
+- package: github.com/jmoiron/sqlx
+- package: github.com/mediocregopher/radix.v2

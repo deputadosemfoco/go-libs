@@ -1,0 +1,16 @@
+hash: f090dcde623e9813bdce4de8dd045111707ac37cdd696e6b993ccae394471ee1
+updated: 2016-08-01T00:01:07.2183521-03:00
+imports:
+- name: github.com/jmoiron/sqlx
+  version: 7396209bbeada6a4fcc28aa9408f89b2e71cac39
+  subpackages:
+  - reflectx
+- name: github.com/mediocregopher/radix.v2
+  version: ae04b3eb3731f94789205d1268e0759371166605
+- name: gopkg.in/mgo.v2
+  version: 29cc868a5ca65f401ff318143f9408d02f4799cc
+  subpackages:
+  - bson
+  - internal/sasl
+  - internal/scram
+testImports: []
