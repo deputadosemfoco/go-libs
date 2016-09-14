@@ -18,8 +18,8 @@ type (
 
 	// Error is the base error struct to http responses
 	Error struct {
-		Message            string `json:"message"`
-		ValidationMessages string `json:"validationMessages"`
+		Message            string   `json:"message"`
+		ValidationMessages []string `json:"validationMessages"`
 	}
 )
 
