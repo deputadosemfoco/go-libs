@@ -1,4 +1,4 @@
-package domain
+package messages
 
 type Error struct {
 	Message string   `json:"message,omitempty"`
