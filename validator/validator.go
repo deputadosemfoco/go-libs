@@ -1,29 +1,25 @@
 package validator
 
+import "reflect"
+
 type (
-	// Validator interface for all validation operations
 	Validator interface {
 		Validate() (bool, []string)
 
-		NotEmpty(str string, msg string) bool
-		IsEmpty(str string) bool
-		IsFltGreaterThanZero(value float64, msg string) bool
-		IsIntGreaterThanZero(value int, msg string) bool
+		NotEmpty(str, msg string) bool
+		IsGt(left, right interface{}, msg string) bool
 	}
 
-	// SimpleValidator is the implementation for Validator
 	SimpleValidator struct {
 		messages []string
 	}
 )
 
-// Build and returns new Validator instance
 func Build() *SimpleValidator {
 	return &SimpleValidator{}
 }
 
-// NotEmpty checks if string is empty and invalid message to messages array
-func (v *SimpleValidator) NotEmpty(str string, msg string) bool {
+func (v *SimpleValidator) NotEmpty(str, msg string) bool {
 	if str == "" {
 		v.messages = append(v.messages, msg)
 		return false
@@ -32,36 +28,29 @@ func (v *SimpleValidator) NotEmpty(str string, msg string) bool {
 	return true
 }
 
-// IsEmpty simple checks if string is empty
-func (v *SimpleValidator) IsEmpty(str string) bool {
-	if str == "" {
-		return true
+func (v *SimpleValidator) IsGt(left, right interface{}, msg string) bool {
+	_left := reflect.ValueOf(left)
+	_right := reflect.ValueOf(right)
+	result := true
+
+	switch _left.Kind() {
+	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
+		result = _left.Int() > _right.Int()
+
+	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Uintptr:
+		result = _left.Uint() > _right.Uint()
+
+	case reflect.Float32, reflect.Float64:
+		result = _left.Float() > _right.Float()
 	}
 
-	return false
-}
-
-// IsFltGreaterThanZero checks if float value is greater than 0
-func (v *SimpleValidator) IsFltGreaterThanZero(value float64, msg string) bool {
-	if value == 0 {
+	if !result {
 		v.messages = append(v.messages, msg)
-		return false
 	}
 
-	return true
+	return result
 }
 
-// IsIntGreaterThanZero checks if int value is greater than 0
-func (v *SimpleValidator) IsIntGreaterThanZero(value int, msg string) bool {
-	if value == 0 {
-		v.messages = append(v.messages, msg)
-		return false
-	}
-
-	return true
-}
-
-// Validate checks if messages array contains any value and returns it with a bool value indicating if is valid or not
 func (v *SimpleValidator) Validate() (bool, []string) {
 	return len(v.messages) == 0, v.messages
 }
