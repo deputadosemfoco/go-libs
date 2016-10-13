@@ -1,4 +1,4 @@
-package: github.com/vitorsalgado/la-democracia/lib
+package: github.com/deputadosemfoco/go-libs
 import:
 - package: github.com/jmoiron/sqlx
 - package: github.com/mediocregopher/radix.v2
