@@ -1,21 +1,45 @@
-hash: a3a42e62fad6f8d4ffa7275ce988dbd7768d3a2bb0499af20c00fe9e56734f50
-updated: 2016-09-14T19:47:23.4915334-03:00
+hash: 9ba56bdb8e90dc7daa8cc22ae81675a274411bf509052d45b3f28e4358236ed8
+updated: 2016-10-28T22:53:06.7120151-02:00
 imports:
+- name: github.com/dimiro1/banner
+  version: 32a935ee2814db5646aaaa28e8f18d471e7cca70
 - name: github.com/jmoiron/sqlx
-  version: 7396209bbeada6a4fcc28aa9408f89b2e71cac39
+  version: 05b81a7d5d38058e42148dc01f17daf4acba4640
+- name: github.com/labstack/echo
+  version: 04e6901d05b58ddbae579a6252a3d1bb3f334adc
   subpackages:
-  - reflectx
+  - engine/standard
+  - context
+  - engine
+  - log
+- name: github.com/labstack/gommon
+  version: 2d272df536d051e737aea353b86c979d6e88bce0
+  subpackages:
+  - log
+  - color
+- name: github.com/mattn/go-colorable
+  version: 6c903ff4aa50920ca86087a280590b36b3152b9c
+- name: github.com/mattn/go-isatty
+  version: 66b8e73f3f5cda9f96b69efd03dd3d7fc4a5cdb8
 - name: github.com/mediocregopher/radix.v2
-  version: f89eeddba0cddc76d4be4abf32f1ac90f2bc05ae
-  subpackages:
-  - redis
+  version: 588311ec26386062e2a8c8f080175258bd8fbdcd
 - name: github.com/stretchr/testify
-  version: d77da356e56a7428ad25149ca77381849a6a5232
+  version: 976c720a22c8eb4eb6a0b4348ad85ad12491a506
   subpackages:
   - assert
+- name: github.com/valyala/fasttemplate
+  version: 3b874956e03f1636d171bda64b130f9135f42cff
+- name: golang.org/x/net
+  version: dffc95cbb4ff9af8614b2741ec26371fffcc19b3
+  subpackages:
+  - context
+- name: golang.org/x/sys
+  version: c200b10b5d5e122be351b67af224adc6128af5bf
+  subpackages:
+  - unix
 testImports:
 - name: github.com/davecgh/go-spew
-  version: 5215b55f46b2b919f50a1df0eaa5886afe4e3b3d
+  version: 6d212800a42e8ab5c146b8ace3490ee17e5225f9
   subpackages:
   - spew
 - name: github.com/pmezard/go-difflib
